@@ -15,11 +15,17 @@
 # date: 30.09.24
 # todo: Доучиться
 
+# int() => integer
+# float() => float
+# str() => string
+# bool() => boolean (True || False)
 
 
-my_age = 29
+my_age = int(input("Введите свой возраст: "))
 
-if my_age > 100:
-    print("Долгожитель")
+# print(type(my_age))
+
+if int(my_age) > 100:
+    print(f"Долгожитель {my_age}")
 else:
     print("Занимайся физкультурой")
