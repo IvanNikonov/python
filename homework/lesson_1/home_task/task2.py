@@ -19,9 +19,11 @@
 age = "23"
 foo = "23abc"
 age = int(age)
-# foo = int(foo) ИСКЛЮЧЕНИЕ
+foo = int(foo, 16)
 print("Преобразуйте переменную age и foo в число")
 print(type(age))
+print(type(foo))
+print(foo)
 
 age = "123abc"
 age = bool(age)
