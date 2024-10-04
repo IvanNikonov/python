@@ -2,6 +2,9 @@
 
 number_string = input("Введите четырехзначное число: ")
 
+if int(number_string) < 0:
+    number_string = number_string * -1
+
 if len(number_string) != 4:
     print('Вы ввели не четырехзначное число')
     exit()
