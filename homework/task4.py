@@ -18,10 +18,20 @@ x = 10
 y = 15
 z = 2
 
-print(f"Наибольшее число {max(x, y, z)}")
+if x > y and x > z:
+    print(f"Наибольшее число {x}")
+elif y > x and y > z:
+    print(f"Наибольшее число {y}")
+elif z > x and z > y:
+    print(f"Наибольшее число {z}")
 
 x = 77
 y = 9
 z = 130
 
-print(f"Наибольшее число {max(x, y, z)}")
+if x > y and x > z:
+    print(f"Наибольшее число {x}")
+elif y > x and y > z:
+    print(f"Наибольшее число {y}")
+elif z > x and z > y:
+    print(f"Наибольшее число {z}")
