@@ -4,6 +4,7 @@ from operator import index
 
 # Пример:
 mass = [1,2,17,54,30,89,2,1,6,2]
+
 #
 #
 # Для числа 1 минимальное растояние в массиве по индексам: 0 и 7
@@ -18,18 +19,20 @@ for value in _set:
         continue
 
     prev = -1
-    summ = -1
-    results = []
+    results = {}
 
     for _index in range(len(mass)):
         if mass[_index] == value:
             if prev != -1:
-                new_summ = _index - prev
-
-                if(new_summ < summ or summ == -1):
-                    summ = new_summ
+                results[_index - prev] = {
+                    'from': prev,
+                    'to': _index,
+                }
 
             prev = _index
+
+    min_range = results[min(results.keys())]
+    print(f"Для числа {value} минимальное расстояние в массиве по индексам: {min_range['from']} и {min_range['to']}")
 
 
 
