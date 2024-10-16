@@ -1,6 +1,6 @@
 # Задача 1
 
-# file = open('lesson_6.py', "r+")
+# file = open('lesson_7.py', "r+")
 # print(file.read())
 #
 # if True:
@@ -12,7 +12,7 @@
 
 import datetime
 
-FILE_LOG = 'files/lesson_6/error.log'
+FILE_LOG = 'files/lesson_7/error.log'
 
 def logger(message, error_type, line, code):
     file = open(FILE_LOG, 'a+', encoding="utf-8")
