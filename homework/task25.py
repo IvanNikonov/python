@@ -4,8 +4,10 @@
 
 
 str_ = "grznuamn zngz cge sge tuz hk uhbouay gz loxyz atrkyy eua'xk jazin."
+letters = 'abcdefghijklmnopqrstuvwxyz'
 
 def decoding(letter):
-    return letter
+    global letters
+    return letters[letters.index(letter) - 6] if letter in letters else letter
 
 print(''.join(list(map(decoding, str_))))
