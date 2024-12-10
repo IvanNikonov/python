@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}{{ resume.name }}{% endblock %}
+
+{% block content %}
+
+    <div class="header">
+        <div class="container">
+            <h1 class="head__title">{{ resume.name }}</h1>
+            <div class="head__date">Опубликовано: {{ resume.get_date_format() }}</div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="container">
+            <div class="content__content">
+                <div class="content__block table">
+                    <div class="table__row table__row--header">
+                        О себе:
+                    </div>
+
+                    <div class="table__row">
+                        <div class="table__title">Имя:</div>
+                        <div class="table__value">{{ resume.user.username }}</div>
+                    </div>
+
+                    <div class="table__row">
+                        <div class="table__title">Телефон:</div>
+                        <div class="table__value"><a href="telto:{{ resume.user.phone }}">{{ resume.user.phone }}</a></div>
+                    </div>
+
+                    <div class="table__row">
+                        <div class="table__title">Электронная почта:</div>
+                        <div class="table__value"><a href="mailto:{{ resume.user.email }}">{{ resume.user.email }}</a></div>
+                    </div>
+
+                    <div class="table__row">
+                        <div class="table__title">Возраст:</div>
+                        <div class="table__value">{{ resume.user.age }}</div>
+                    </div>
+                </div>
+
+                <div class="content__block table">
+                    <div class="table__row table__row--header">
+                        Опыт работы:
+                    </div>
+
+                    {% if resume.experience %}
+                        {% for work in resume.experience %}
+                            <div class="table__row">
+                                <div class="table__title">{{ work.period }}</div>
+                                <div class="table__value">{{ work.name }} ({{ work.position }})</div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
