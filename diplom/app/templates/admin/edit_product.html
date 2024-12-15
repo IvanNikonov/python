@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+{% include 'blocks/head.html' %}
+<body class="body">
+    {% include 'blocks/admin_header.html' %}
+    <main class="admin-page">
+        {% with active='product' %}
+            {% include 'blocks/admin_side_menu.html' %}
+        {% endwith %}
+        <div class="admin-page__content">
+            <div class="admin-page__top-controls">
+                <button type="submit" name="save" value="1" form="edit-form" class="btn">Сохранить</button>
+                <a href="/admin/product/list/" class="btn btn--white">Вернуться в список</a>
+            </div>
+
+
+            {% if product.errors %}
+                <div class="admin-page__errors errors-list">
+                    {%  for error in product.errors%}
+                    <div class="errors-list__item">
+                        {{error}}
+                    </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <form id="edit-form" action="" enctype="multipart/form-data" method="post" class="admin-page__form form">
+                <label class="form__label label label--border">
+                   <span class="label__name">Наименование:</span>
+                   <input name="name" value="{% if product.name %}{{product.name}}{% endif %}" type="text" class="label__input input">
+               </label>
+
+                <label class="form__label label label--border">
+                   <span class="label__name">Псевдоним:</span>
+                   <input name="alias" value="{% if product.alias %}{{product.alias}}{% endif %}" type="text" class="label__input input">
+               </label>
+
+                <label class="form__label label label--border">
+                   <span class="label__name">Цена:</span>
+                   <input type="number" step="0.01" name="price" value="{% if product.price %}{{product.price}}{% endif %}" class="label__input input">
+               </label>
+
+                <label class="form__label label label--checkbox">
+                   <span class="label__name">Активен</span>
+                   <input type="checkbox" name="is_active" value="1" {% if product.is_active %}checked{% endif %} class="label__input input">
+               </label>
+            </form>
+        </div>
+    </main>
+    {% include 'blocks/footer.html' %}
+</body>
+</html>

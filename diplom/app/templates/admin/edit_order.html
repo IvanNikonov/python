@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+{% include 'blocks/head.html' %}
+<body class="body">
+    {% include 'blocks/admin_header.html' %}
+    <main class="admin-page">
+        {% with active='order' %}
+            {% include 'blocks/admin_side_menu.html' %}
+        {% endwith %}
+        <div class="admin-page__content">
+            <div class="admin-page__top-controls">
+                <button type="submit" name="save" value="1" form="edit-form" class="btn">Сохранить</button>
+                <a href="/admin/order/list/" class="btn btn--white">Вернуться в список</a>
+            </div>
+
+
+            {% if order.errors %}
+                <div class="admin-page__errors errors-list">
+                    {%  for error in order.errors%}
+                    <div class="errors-list__item">
+                        {{error}}
+                    </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <form id="edit-form" action="" enctype="multipart/form-data" method="post" class="admin-page__form form">
+                <div class="form__label label label--border">
+                   <span class="label__name">Номер заказа:</span>
+                    <div class="label__input input">
+                        №{% if order.id %}{{order.id}}{% endif %}
+                    </div>
+                </div>
+                <div class="form__label label label--border">
+                   <span class="label__name">Дата заказа:</span>
+                    <div class="label__input input">
+                        {% if order.dt_create_formated %}{{order.dt_create_formated}}{% endif %}
+                    </div>
+                </div>
+
+                <label class="form__label label label--border">
+                   <span class="label__name">Статус заказа:</span>
+                    <select class="label__input input" name="id_status">
+                        {% for status in status_list %}
+                            <option {% if status.id == order.id_status %} selected {% endif %} value="{{status.id}}">{{status.name}}</option>
+                        {% endfor%}
+                    </select>
+                </label>
+                <div class="form__label label label--border">
+                   <span class="label__name">ФИО:</span>
+                    <div class="label__input input">
+                        {% if order.name %}{{order.name}}{% endif %}
+                    </div>
+                </div>
+                
+                <div class="form__label label label--border">
+                   <span class="label__name">Телефон:</span>
+                    <div class="label__input input">
+                        {% if order.phone %}{{order.phone}}{% endif %}
+                    </div>
+                </div>
+
+                <div class="form__label label label--border">
+                   <span class="label__name">E-mail:</span>
+                    <div class="label__input input">
+                        {% if order.email %}{{order.email}}{% endif %}
+                    </div>
+                </div>
+
+                <div class="form__label label label--border">
+                   <span class="label__name">Комментарий:</span>
+                    <div class="label__input input">
+                        {% if order.comment %}{{order.comment}}{% endif %}
+                    </div>
+                </div>
+            </form>
+
+            {% if order.elements %}
+                    <div class="admin-table cart-page__table">
+                        <div class="admin-table__row admin-table__row--head">
+                            <div class="admin-table__cell admin-table__cell--small">№ п/п</div>
+                            <div class="admin-table__cell">Наименование</div>
+                            <div class="admin-table__cell admin-table__cell--medium">Цена</div>
+                            <div class="admin-table__cell admin-table__cell--small">Количество</div>
+                            <div class="admin-table__cell admin-table__cell--medium">Сумма</div>
+                        </div>
+                        {% for item in order.elements %}
+                            <div class="admin-table__row">
+                                <div class="admin-table__cell admin-table__cell--small">
+                                    {{loop.index}}
+                                </div>
+                                <div class="admin-table__cell">{{ item.product.name }}</div>
+                                <div class="admin-table__cell admin-table__cell--medium">
+                                    {{ item.price }}
+                                </div>
+                                <div class="admin-table__cell admin-table__cell--small">
+                                    {{ item.count }}
+                                </div>
+                                <div class="admin-table__cell admin-table__cell--medium">
+                                    {{ item.sum }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <div class="admin-table__row admin-table__row--head">
+                            <div class="admin-table__cell admin-table__cell--small"></div>
+                            <div class="admin-table__cell"></div>
+                            <div class="admin-table__cell admin-table__cell--medium"></div>
+                            <div class="admin-table__cell admin-table__cell--small">
+                                {{ order.sum }}
+                            </div>
+                            <div class="admin-table__cell admin-table__cell--medium">
+                                {{ order.count }}
+                            </div>
+                            <div class="admin-table__cell admin-table__cell--small"></div>
+                        </div>
+                    </div>
+                {% endif %}
+        </div>
+    </main>
+    {% include 'blocks/footer.html' %}
+</body>
+</html>

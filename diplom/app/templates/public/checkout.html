@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+{% include 'blocks/head.html' %}
+<body class="body">
+    {% include 'blocks/header.html' %}
+    <main class="checkout-page">
+        <div class="container">
+            <div class="checkout-page__content">
+                <h1 class="h1">Оформления заказа</h1>
+
+                {% if order.errors %}
+                    <div class="checkout-page__errors errors-list">
+                        {%  for error in order.errors %}
+                        <div class="errors-list__item">
+                            {{error}}
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <form action="/checkout/" method="post" enctype="multipart/form-data" class="checkout-page__form">
+                    <div class="checkout-page__fields">
+                        <label class="form__label label label--border">
+                           <span class="label__name">ФИО:</span>
+                           <input name="name" value="{% if order.name %}{{order.name}}{% endif %}" type="text" class="label__input input">
+                       </label>
+
+                        <label class="form__label label label--border">
+                           <span class="label__name">Телефон:</span>
+                           <input name="phone" value="{% if order.phone %}{{order.phone}}{% endif %}" type="text" class="label__input input">
+                       </label>
+
+                        <label class="form__label label label--border">
+                           <span class="label__name">Email:</span>
+                           <input type="text" name="email" value="{% if order.email %}{{order.email}}{% endif %}" class="label__input input">
+                       </label>
+
+                        <label class="form__label label label--border">
+                           <span class="label__name">Комментарий:</span>
+                            <textarea name="comment" class="label__input input">{% if order.comment %}{{order.comment}}{% endif %}</textarea>
+                       </label>
+                    </div>
+                    <div class="checkout-page__total">
+                        <div class="checkout-page__total-row total-row">
+                            <div class="total-row__name">Количество товаров:</div>
+                            <div class="total-row__value">{{ cart.total_count }}</div>
+                        </div>
+
+                        <div class="checkout-page__total-row total-row">
+                            <div class="total-row__name">Сумма заказа:</div>
+                            <div class="total-row__value">{{cart.total_summ}} руб.</div>
+                        </div>
+                        <button type="submit" class="btn form__button">Оформить заказ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    {% include 'blocks/footer.html' %}
+</body>
+</html>

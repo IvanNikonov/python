@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+{% include 'blocks/head.html' %}
+<body class="body">
+    {% include 'blocks/header.html' %}
+    <main class="catalog-page">
+        <div class="container">
+            <div class="catalog-page__content">
+                <h1 class="h1">Каталог</h1>
+
+                {% if list %}
+                    <div class="catalog-page__catalog-list catalog-list">
+                        {%  for item in list%}
+                            {% with element=item, class='catalog-list__item' %}
+                                {% include 'public/catalog-element.html' %}
+                            {% endwith %}
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="catalog-page__empty-text empty-text">
+                        Список товаров пуст
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+    {% include 'blocks/footer.html' %}
+</body>
+</html>

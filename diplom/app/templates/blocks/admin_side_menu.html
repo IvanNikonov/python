@@ -1,0 +1,29 @@
+
+
+<nav class="admin-page__side">
+    <ul class="admin-page__side side-menu">
+        <li class="side-menu__item {%- if active=='product' %} side-menu__item--active{% endif %}">
+            <a href="/admin/product/list/" class="side-menu__link">
+                <span class="side-menu__text">
+                    Товары
+                </span>
+            </a>
+        </li>
+
+<!--        <li class="side-menu__item {%- if active=='category' %} side-menu__item&#45;&#45;active{% endif %}">-->
+<!--            <a href="/admin/category/list/" class="side-menu__link">-->
+<!--                <span class="side-menu__text">-->
+<!--                    Категории-->
+<!--                </span>-->
+<!--            </a>-->
+<!--        </li>-->
+
+        <li class="side-menu__item {%- if active=='order' %} side-menu__item--active{% endif %}">
+            <a href="/admin/order/list/" class="side-menu__link">
+                <span class="side-menu__text">
+                    Заказы
+                </span>
+            </a>
+        </li>
+    </ul>
+</nav>

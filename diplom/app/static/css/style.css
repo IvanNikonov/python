@@ -1,0 +1,410 @@
+:root{
+    --main-color: #333;
+}
+
+main{
+    flex: 1 1 auto;
+}
+
+.h1{
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.body{
+    margin: 0;
+    background: #fafafa;
+    font-family: sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column
+}
+
+.body--admin{
+    padding: 0;
+}
+
+.container{
+    margin: 0 auto;
+    max-width: 100%;
+    width: 1420px;
+    padding: 0 10px;
+}
+
+.label{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+}
+
+.label--border .label__input{
+    border: 1px solid var(--main-color);
+}
+
+.label__name{
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.input{
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 0;
+}
+
+.btn{
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #fff;
+    background: var(--main-color);
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn--white{
+    background: #fff;
+    color: var(--main-color);
+}
+
+.btn--icon{
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.footer{
+    padding: 20px 0;
+    background: var(--main-color);
+    color: #fff;
+}
+
+.header{
+    width: 100%;
+    color: #fff;
+    background: var(--main-color);
+    padding: 10px 0
+}
+
+.header__content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__link{
+    color: #fff;
+    text-decoration: none;
+}
+
+.menu{
+    gap: 10px;
+}
+
+.menu__list{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu__item{
+    form-weight: 500px;
+    text-transform: uppercase;
+}
+
+.menu__link{
+    color: inherit;
+    text-decoration: none;
+}
+
+.cart{
+    border: 1px solid #fff;
+    border-radius: 50%;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-page{
+    padding 10px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-page__form{
+    width: 320px;
+    max-width: 100%;
+    padding: 30px;
+    background: var(--main-color);
+    color: #fff;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch;
+}
+
+.admin-page{
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+.admin-page__side{
+    background: var(--main-color);
+    color: #fff;
+    flex: 0 0 300px;
+    padding: 20px 0;
+    min-height: 100%;
+    overflow: auto;
+}
+
+.admin-page__content{
+    flex: 1 1 auto;
+}
+
+.side-menu{
+    margin: 0;
+    padding: 0;
+    list-type: none
+}
+
+.side-menu__item{
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.side-menu__item:hover .side-menu__link,
+.side-menu__item--active{
+    text-align: right;
+}
+
+.side-menu__link{
+    position: relative;
+    display: block;
+    padding: 20px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    color: inherit;
+    text-decoration: none;
+}
+
+.admin-page__content{
+    padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+}
+
+.admin-page__listing{
+
+}
+
+.empty-text{
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.admin-icon__icon{
+    width: 20px;
+    height: 20px;
+}
+
+.admin-table__row{
+    display: flex;
+    border-bottom: 1px solid var(--main-color)
+}
+
+.admin-table__row--head{
+    font-weight: bold;
+}
+
+.admin-table__cell{
+    flex: 1 1 auto;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.admin-table__cell--small{
+    flex: 0 0 100px;
+    max-width: 100px;
+}
+
+.admin-table__cell--medium{
+    flex: 0 0 250px;
+    max-width: 250px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 600px;
+    max-width: 100%;
+}
+
+.label--checkbox{
+    position: relative;
+    padding-left: 30px
+}
+
+.label--checkbox .label__input{
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.label--checkbox:has(input:checked)::before{
+    background: var(--main-color) url('../img/check-white.svg') center no-repeat;
+    background-size: 30px;
+}
+
+.label--checkbox::before{
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 0;
+    border: 1px solid var(--main-color);
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 25%;
+}
+
+.errors-list{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: tomato;
+}
+
+.catalog-page{
+    padding: 40px 0;
+}
+
+.catalog-page__content{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.catalog-list{
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.catalog-list__item{
+    flex: 0 0 calc(20% - 20px * 5 / 6)
+}
+
+.catalog-element{
+    box-shadow: 1px 1px 10px 1px #aaa;
+    border-radius: 20px;
+}
+
+.catalog-element__bottom{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.catalog-element__name{
+    font-weight: bold;
+    font-size: 18px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.catalog-element__price{
+    display: flex;
+    gap: 10px;
+}
+
+.catalog-element__price-title{
+    font-weight: bold;
+}
+
+.cart-page{
+    padding: 40px 0;
+}
+
+.cart-page__content{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.cart-page__checkout-btn{
+    align-self: flex-end;
+}
+
+.checkout-page{
+    padding: 40px 0;
+}
+
+.checkout-page__content{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.checkout-page__form{
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.checkout-page__fields{
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.checkout-page__total{
+    flex: 0 0 400px;
+    border: 1px solid var(--main-color);
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.total-row{
+    display: flex;
+    gap: 20px;
+}
+
+.total-row__name{
+    font-weight: bold;
+    flex: 0 0 200px;
+}
+
+.total-row__value{
+    flex: 1 1 auto;
+}

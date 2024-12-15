@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+{% include 'blocks/head.html' %}
+<body class="body body--admin">
+   <main class="login-page">
+       <form action="/admin/login/" method="post" enctype="multipart/form-data" class="login-page__form">
+           <label class="login-page__label label">
+               <span class="label__name">Логин:</span>
+               <input name="login" type="text" class="label__input input">
+           </label>
+
+           <label class="login-page__label label">
+               <span class="label__name">Пароль:</span>
+               <input name="password" type="password" class="label__input input">
+           </label>
+
+           <button class="btn btn--white">Войти</button>
+       </form>
+   </main>
+</body>
+</html>

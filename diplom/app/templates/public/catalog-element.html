@@ -1,0 +1,15 @@
+<div class="catalog-element {{class}}">
+    <div class="catalog-element__top">
+
+    </div>
+
+    <form action="/cart/add/" method="post" enctype="multipart/form-data" class="js-product-form catalog-element__bottom">
+        <input type="hidden" name="product_id" value="{{element.id}}">
+        <a href="{{element.get_url()}}" class="catalog-element__name">{{element.name}}</a>
+        <div class="catalog-element__price">
+            <div class="catalog-element__price-title">Цена:</div>
+            <div class="catalog-element__price-value">{{element.price}} руб.</div>
+        </div>
+        <button type="submit" class="btn">В корзину</button>
+    </form>
+</div>

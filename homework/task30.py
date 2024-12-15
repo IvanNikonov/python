@@ -30,9 +30,9 @@ class DB:
             print(Exception)
             print(e)
 
-    @staticmethod
-    def get_instance(self):
-        return self._instance
+    @classmethod
+    def get_instance(cls):
+        return cls._instance
 
 
 db1 = DB(host="PostgreSQL-16", port="5432", user="orm", password="tester", db="orm")

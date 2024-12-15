@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+{% include 'blocks/head.html' %}
+<body class="body">
+    {% include 'blocks/header.html' %}
+    <main class="cart-page">
+        <div class="container">
+            <div class="cart-page__content">
+                <h1 class="h1">Корзина</h1>
+
+                {% if content.list %}
+                    <div class="admin-table cart-page__table">
+                        <div class="admin-table__row admin-table__row--head">
+                            <div class="admin-table__cell admin-table__cell--small">№ п/п</div>
+                            <div class="admin-table__cell">Наименование</div>
+                            <div class="admin-table__cell admin-table__cell--medium">Цена</div>
+                            <div class="admin-table__cell admin-table__cell--small">Количество</div>
+                            <div class="admin-table__cell admin-table__cell--medium">Сумма</div>
+                            <div class="admin-table__cell admin-table__cell--small"></div>
+                        </div>
+                        {% for item in content.list %}
+                            <form action="/cart/delete/" method="post" enctype="multipart/form-data" class="admin-table__row">
+                                <input type="hidden" name="product_id" value="{{ item.product.id }}">
+                                <div class="admin-table__cell admin-table__cell--small">
+                                    {{loop.index}}
+                                </div>
+                                <div class="admin-table__cell">
+                                    <a href="{{ item.product.get_url() }}" class="admin-table__link">
+                                        {{ item.product.name }}
+                                    </a>
+                                </div>
+                                <div class="admin-table__cell admin-table__cell--medium">
+                                    {{ item.product.price }}
+                                </div>
+                                <div class="admin-table__cell admin-table__cell--small">
+                                    {{ item.count }}
+                                </div>
+                                <div class="admin-table__cell admin-table__cell--medium">
+                                    {{ item.summ }}
+                                </div>
+                                <div class="admin-table__cell admin-table__cell--small">
+                                    <button type="submit" class="btn btn--icon admin-icon">
+                                        <svg class="admin-icon__icon" width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10 12V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M14 12V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M4 7H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M6 10V18C6 19.6569 7.34315 21 9 21H15C16.6569 21 18 19.6569 18 18V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </form>
+                        {% endfor %}
+                        <div class="admin-table__row admin-table__row--head">
+                            <div class="admin-table__cell admin-table__cell--small"></div>
+                            <div class="admin-table__cell"></div>
+                            <div class="admin-table__cell admin-table__cell--medium"></div>
+                            <div class="admin-table__cell admin-table__cell--small">
+                                {{ content.total_count }}
+                            </div>
+                            <div class="admin-table__cell admin-table__cell--medium">
+                                {{ content.total_summ }}
+                            </div>
+                            <div class="admin-table__cell admin-table__cell--small"></div>
+                        </div>
+                    </div>
+
+                    <a href="/checkout/" class="btn cart-page__checkout-btn">Оформить заказ</a>
+                {% else %}
+                    <div class="cart-page__empty-text empty-text">
+                        Список товаров пуст
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+    {% include 'blocks/footer.html' %}
+</body>
+</html>
