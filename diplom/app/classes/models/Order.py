@@ -1,6 +1,7 @@
 from app.classes.models.Model import Model
 from app.classes.models.OrderElement import OrderElement
 from app.classes.models.OrderStatus import OrderStatus
+from app.classes.api.Telegram import Telegram
 from datetime import datetime
 from app.classes.Cart import Cart
 
@@ -58,3 +59,21 @@ class Order(Model):
                 element.save_to_db()
 
         Cart.get_instance().clear()
+
+        self.notify_by_telegram()
+
+    def notify_by_telegram(self):
+        order = Order.get_by_key('id', self.id)
+        message = ''
+        message += f'Новый заказ №{order.id} на сайте\n'
+        message += f'<b>Время заказа:</b> {order.dt_create_formated}\n'
+        message += f'<b>ФИО:</b> {order.name}\n'
+        message += f'<b>Телефон:</b> {order.phone}\n'
+        message += f'<b>E-mail:</b> {order.email}\n'
+        message += f'<b>Сумма заказа:</b> {order.sum} руб.\n'
+        message += f'<b>Состав заказа</b>\n'
+
+        for element in order.elements:
+            message += f'{element.product.name} - {element.count} шт.\n'
+
+        Telegram.get_instance().sendMessage(message)

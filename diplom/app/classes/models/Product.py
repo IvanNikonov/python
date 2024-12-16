@@ -31,5 +31,5 @@ class Product(Model):
         return len(self.errors) == 0
 
     def get_url(self):
-        return f"/product/{self.id}/"
+        return f"/product/{self.alias}/"
 

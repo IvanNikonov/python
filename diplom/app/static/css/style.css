@@ -408,3 +408,13 @@ main{
 .total-row__value{
     flex: 1 1 auto;
 }
+
+.product-page{
+    padding: 40px 0;
+}
+
+.product-page__content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

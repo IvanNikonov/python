@@ -28,8 +28,9 @@ def show_category_page():
 
 
 @app.route('/product/<alias>/')
-def show_product_page():
-    return "Это Категория"
+def show_product_page(alias):
+    product = Product.get_by_key('alias', alias)
+    return render_template("public/product.html", product=product)
 
 
 @app.route('/cart/')
@@ -127,6 +128,9 @@ def show_admin_edit_page(item_type, item_id=None):
                 product = Product()
 
             if data is not None:
+                if "is_active" not in data:
+                    data.update({"is_active": "0"})
+
                 product.set_attributes(data)
 
                 if product.validate():

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+{% include 'blocks/head.html' %}
+<body class="body">
+    {% include 'blocks/header.html' %}
+    <main class="product-page">
+        <div class="container">
+            <div class="product-page__content">
+                <h1 class="h1">{{product.name}}</h1>
+                <div class="product-page__price total-row">
+                    <div class="total-row__name">Цена:</div>
+                    <div class="total-row__value"> {{product.price}} руб.</div>
+                </div>
+                <form action="/cart/add/" method="post" enctype="multipart/form-data" class="js-product-form product-page__form">
+                    <input type="hidden" name="product_id" value="{{product.id}}">
+                    <button type="submit" class="btn">В корзину</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    {% include 'blocks/footer.html' %}
+</body>
+</html>

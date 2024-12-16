@@ -18,19 +18,18 @@ class Model(ABC):
 
     @classmethod
     def get_list(cls, filters=[], sorters=[], limit=20):
-
         where = ''
         order_by = 'ORDER BY id ASC'
 
         if isinstance(filters, list) and len(filters) > 0:
-            print(type(filters))
-            order_by = f"WHERE {" AND ".join(filters)}"
+            where = f"WHERE {" AND ".join(filters)}"
 
         if isinstance(sorters, list) and len(sorters) > 0:
             order_by = f"ORDER BY {", ".join(sorters)}"
 
         sql = f'SELECT * FROM "{cls._table}" {where} {order_by} LIMIT {limit}'
 
+        print(sql)
         result = DB.get_instance().select_all(sql)
 
         if result is None:
